@@ -4,8 +4,8 @@ using System.Collections;
 
 public class PlayerMovement : MonoBehaviour {
 
-	[SerializeField] float _xspeed = 25f;
-	[SerializeField] float _yspeed = -75f;
+	[SerializeField] float _xspeed = 10f;
+	[SerializeField] float _yspeed = -100f;
 	[SerializeField] float _playerSpeed = 10f;
 	[SerializeField] ParticleSystem _particleSystem;
 	public bool _isDead = false;
@@ -24,9 +24,10 @@ public class PlayerMovement : MonoBehaviour {
 			float horizontal = Input.GetAxisRaw ("Horizontal");
 			this.GetComponent<Rigidbody2D> ().velocity = Vector2.right * horizontal * _xspeed;
 			this.GetComponent<Rigidbody2D> ().AddForce (new Vector2 (0, _yspeed));
-			if (Input.GetKey(KeyCode.DownArrow)) {
+            if (Input.GetKey(KeyCode.DownArrow) || Input.GetMouseButton(0)) {
 				this.GetComponent<Rigidbody2D> ().AddForce (new Vector2 (0, _yspeed * _playerSpeed));
 			}
+
 		} else {
 			DelayAnimation ();
 //			this.GetComponent<P

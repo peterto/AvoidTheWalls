@@ -18,7 +18,7 @@ public class PickerUpperController : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D col) {
 		if (col.gameObject.CompareTag("PickUp")) {
-			print (col.gameObject.tag);
+//			print (col.gameObject.tag);
 			PlayerMovement.pickUpCount += 1;
 			_scoreText.GetComponent<Text> ().text = PlayerMovement.pickUpCount.ToString ();
 			Destroy (col.gameObject);
