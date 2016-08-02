@@ -24,8 +24,10 @@ public class PlayerMovement : MonoBehaviour {
 			float horizontal = Input.GetAxisRaw ("Horizontal");
 			this.GetComponent<Rigidbody2D> ().velocity = Vector2.right * horizontal * _xspeed;
 			this.GetComponent<Rigidbody2D> ().AddForce (new Vector2 (0, _yspeed));
-            if (Input.GetKey(KeyCode.DownArrow) || Input.GetMouseButton(0)) {
-				this.GetComponent<Rigidbody2D> ().AddForce (new Vector2 (0, _yspeed * _playerSpeed));
+//            if (Input.GetKey(KeyCode.DownArrow) || Input.GetMouseButton(0)) {
+             if (Input.GetKey(KeyCode.DownArrow) || Input.GetMouseButton(0)) {
+                    
+                this.GetComponent<Rigidbody2D> ().AddForce (new Vector2 (0, _yspeed * _playerSpeed));
 			}
 
 		} else {
