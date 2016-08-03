@@ -8,13 +8,21 @@ public class PlayerMovement : MonoBehaviour {
 	[SerializeField] float _yspeed = -100f;
 	[SerializeField] float _playerSpeed = 10f;
 	[SerializeField] ParticleSystem _particleSystem;
-	public bool _isDead = false;
+	public static bool _isDead = false;
 	public static int pickUpCount = 0;
 	// Use this for initialization
 	[SerializeField] Sprite _original;
 	[SerializeField] GameObject _level;
+	[SerializeField] GameObject _music;
+	[SerializeField] GameObject _menu;
+	[SerializeField] GameObject _pickUps;
+	public static bool _runAnimation = true;
 	void Start () {
 		pickUpCount = 0;
+
+		if (this.gameObject.GetComponent<Rigidbody2D> () == null) {
+			this.gameObject.AddComponent<Rigidbody2D> ();
+		}
 	}
 	
 	// Update is called once per frame
@@ -22,19 +30,31 @@ public class PlayerMovement : MonoBehaviour {
 
 		if (!_isDead) {
 			float horizontal = Input.GetAxisRaw ("Horizontal");
-			this.GetComponent<Rigidbody2D> ().velocity = Vector2.right * horizontal * _xspeed;
-			this.GetComponent<Rigidbody2D> ().AddForce (new Vector2 (0, _yspeed));
+			if (this.gameObject.GetComponent<Rigidbody2D> () == null) {
+				this.gameObject.AddComponent<Rigidbody2D> ();
+			} else {
+				Rigidbody2D rigidbody = this.gameObject.GetComponent<Rigidbody2D> ();
+				rigidbody.velocity = Vector2.right * horizontal * _xspeed;
+				rigidbody.AddForce (new Vector2 (0, _yspeed));
 //            if (Input.GetKey(KeyCode.DownArrow) || Input.GetMouseButton(0)) {
-             if (Input.GetKey(KeyCode.DownArrow) || Input.GetMouseButton(0)) {
+				if (Input.GetKey (KeyCode.DownArrow) || Input.GetMouseButton (0)) {
                     
-                this.GetComponent<Rigidbody2D> ().AddForce (new Vector2 (0, _yspeed * _playerSpeed));
+					rigidbody.AddForce (new Vector2 (0, _yspeed * _playerSpeed));
+				}
 			}
 
 		} else {
-			DelayAnimation ();
+//			Invoke ("DelayAnimation", 1f);
+//			DelayAnimation ();
 //			this.GetComponent<P
-			_particleSystem.Emit(1);
-			Invoke ("ReloadScene", .1f);
+	
+			if (_runAnimation) {
+//			_particleSystem.Emit (1);
+
+				Invoke ("Death", 0f);
+				Invoke ("SetMenuActive", 0.5f);
+			}
+//			Invoke ("ReloadScene", .1f);
 //			ResetPlayer();
 
 		}
@@ -66,7 +86,24 @@ public class PlayerMovement : MonoBehaviour {
 
 	void DelayAnimation() {
 		Destroy (this.gameObject.GetComponent<Rigidbody2D> ());
-//		Animator animator = this.GetComponent<Animator> ();
-//		animator.enabled = true;
+
+		_music.GetComponent<AudioSource> ().Pause ();
+		_menu.SetActive (true);
+		Time.timeScale = 0;
+	}
+
+	void Death() {
+		if (this.GetComponentInChildren<ParticleSystem> () != null)
+			this.GetComponentInChildren<ParticleSystem> ().Emit (1);
+		Destroy (GameObject.FindGameObjectWithTag ("PickUpGroup"));
+		Destroy (this.gameObject.GetComponent<Rigidbody2D> ());
+		_music.GetComponent<AudioSource> ().Stop ();
+		CameraFollow.ShakeCamera (0.5f, 0.5f);
+		Destroy (GameObject.FindGameObjectWithTag("ParticleSystem"));
+		_runAnimation = false;
+	}
+
+	void SetMenuActive() {
+		_menu.SetActive(true);
 	}
 }

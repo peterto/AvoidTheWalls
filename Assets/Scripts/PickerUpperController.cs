@@ -13,14 +13,14 @@ public class PickerUpperController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		_scoreText.GetComponent<Text> ().text = PlayerMovement.pickUpCount.ToString ();
 	}
 
 	void OnTriggerEnter2D(Collider2D col) {
 		if (col.gameObject.CompareTag("PickUp")) {
 //			print (col.gameObject.tag);
 			PlayerMovement.pickUpCount += 1;
-			_scoreText.GetComponent<Text> ().text = PlayerMovement.pickUpCount.ToString ();
+
 			Destroy (col.gameObject);
 		}
 
