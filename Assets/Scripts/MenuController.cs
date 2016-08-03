@@ -23,7 +23,6 @@ public class MenuController : MonoBehaviour {
 		PlayerMovement.pickUpCount = 0;
 		Instantiate (_pickUps);
 		_menu.gameObject.GetComponent<Animator> ().SetBool ("ExitMenu", true);
-		print (_menu.gameObject.GetComponent<Animator> ().GetBool ("ExitMenu"));
 		this.gameObject.GetComponent<AudioSource> ().Play ();
 		Invoke ("AnimateMenu", 1f);
 	}

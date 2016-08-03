@@ -18,8 +18,12 @@ public class PickerUpperController : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D col) {
 		if (col.gameObject.CompareTag("PickUp")) {
-//			print (col.gameObject.tag);
-			PlayerMovement.pickUpCount += 1;
+			if (PlayerMovement._isSuper) {
+				PlayerMovement.pickUpCount += 10;
+			} else {
+				PlayerMovement.pickUpCount += 1;
+			}
+
 			col.gameObject.GetComponent<AudioSource> ().Play ();
 			col.gameObject.GetComponent<SpriteRenderer> ().enabled = false;
 			col.gameObject.GetComponent<BoxCollider2D> ().enabled = false;
@@ -30,7 +34,4 @@ public class PickerUpperController : MonoBehaviour {
 			SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex + 1);
 		}
 	}
-
-//	void DestroyPickup() {
-//	}
 }

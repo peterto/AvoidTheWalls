@@ -10,12 +10,14 @@ public class PlayerMovement : MonoBehaviour {
 	[SerializeField] ParticleSystem _particleSystem;
 	public static bool _isDead = false;
 	public static int pickUpCount = 0;
+	public static bool _isSuper = false;
 	// Use this for initialization
 	[SerializeField] Sprite _original;
 	[SerializeField] GameObject _level;
 	[SerializeField] GameObject _music;
 	[SerializeField] GameObject _menu;
 	[SerializeField] GameObject _pickUps;
+	[SerializeField] GameObject _menuController;
 	public static bool _runAnimation = true;
 	void Start () {
 		pickUpCount = 0;
@@ -36,26 +38,25 @@ public class PlayerMovement : MonoBehaviour {
 				Rigidbody2D rigidbody = this.gameObject.GetComponent<Rigidbody2D> ();
 				rigidbody.velocity = Vector2.right * horizontal * _xspeed;
 				rigidbody.AddForce (new Vector2 (0, _yspeed));
-//            if (Input.GetKey(KeyCode.DownArrow) || Input.GetMouseButton(0)) {
 				if (Input.GetKey (KeyCode.DownArrow) || Input.GetMouseButton (0)) {
-                    
+					_isSuper = true;
 					rigidbody.AddForce (new Vector2 (0, _yspeed * _playerSpeed));
+				} else {
+					_isSuper = false;
 				}
 			}
 
 		} else {
-//			Invoke ("DelayAnimation", 1f);
-//			DelayAnimation ();
-//			this.GetComponent<P
 	
 			if (_runAnimation) {
-//			_particleSystem.Emit (1);
-
 				Invoke ("Death", 0f);
 				Invoke ("SetMenuActive", 0.5f);
 			}
-//			Invoke ("ReloadScene", .1f);
-//			ResetPlayer();
+
+			if (Input.GetKeyDown(KeyCode.Escape)) {
+				_menuController.GetComponent<MenuController> ().RestartLevel ();
+			}
+
 
 		}
 	}
@@ -64,7 +65,6 @@ public class PlayerMovement : MonoBehaviour {
 		if (col.gameObject.CompareTag ("Obstacle")) {
 			this.gameObject.GetComponent<AudioSource> ().Play ();
 			_isDead = true;
-//			this.transform.position = new Vector2 (0, 0);
 		}
 	}
 
@@ -94,13 +94,11 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	void Death() {
-//		if (this.GetComponentInChildren<ParticleSystem> () != null)
 		this.GetComponentInChildren<ParticleSystem> ().Emit (10);
 		Destroy (GameObject.FindGameObjectWithTag ("PickUpGroup"));
 		Destroy (this.gameObject.GetComponent<Rigidbody2D> ());
 		_music.GetComponent<AudioSource> ().Stop ();
 		CameraFollow.ShakeCamera (0.5f, 0.5f);
-//		Destroy (GameObject.FindGameObjectWithTag("ParticleSystem"));
 		_runAnimation = false;
 	}
 
