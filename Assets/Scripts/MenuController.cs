@@ -18,12 +18,13 @@ public class MenuController : MonoBehaviour {
 
 		//		rigidbody.AddForce (new Vector2 (0, _yspeed * _playerSpeed));
 		//		_player.
-		GameObject ps = Instantiate(_particleSystem);
-		ps.transform.parent = _player.transform;
+//		GameObject ps = Instantiate(_particleSystem);
+//		ps.transform.parent = _player.transform;
 		PlayerMovement.pickUpCount = 0;
 		Instantiate (_pickUps);
 		_menu.gameObject.GetComponent<Animator> ().SetBool ("ExitMenu", true);
 		print (_menu.gameObject.GetComponent<Animator> ().GetBool ("ExitMenu"));
+		this.gameObject.GetComponent<AudioSource> ().Play ();
 		Invoke ("AnimateMenu", 1f);
 	}
 

@@ -20,12 +20,17 @@ public class PickerUpperController : MonoBehaviour {
 		if (col.gameObject.CompareTag("PickUp")) {
 //			print (col.gameObject.tag);
 			PlayerMovement.pickUpCount += 1;
-
-			Destroy (col.gameObject);
+			col.gameObject.GetComponent<AudioSource> ().Play ();
+			col.gameObject.GetComponent<SpriteRenderer> ().enabled = false;
+			col.gameObject.GetComponent<BoxCollider2D> ().enabled = false;
+			Destroy (col.gameObject, 1f);
 		}
 
 		if (col.gameObject.CompareTag ("Goal")) {
 			SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex + 1);
 		}
 	}
+
+//	void DestroyPickup() {
+//	}
 }

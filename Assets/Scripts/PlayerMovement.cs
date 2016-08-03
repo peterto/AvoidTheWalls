@@ -62,6 +62,7 @@ public class PlayerMovement : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D col) {
 		if (col.gameObject.CompareTag ("Obstacle")) {
+			this.gameObject.GetComponent<AudioSource> ().Play ();
 			_isDead = true;
 //			this.transform.position = new Vector2 (0, 0);
 		}
@@ -93,13 +94,13 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	void Death() {
-		if (this.GetComponentInChildren<ParticleSystem> () != null)
-			this.GetComponentInChildren<ParticleSystem> ().Emit (1);
+//		if (this.GetComponentInChildren<ParticleSystem> () != null)
+		this.GetComponentInChildren<ParticleSystem> ().Emit (10);
 		Destroy (GameObject.FindGameObjectWithTag ("PickUpGroup"));
 		Destroy (this.gameObject.GetComponent<Rigidbody2D> ());
 		_music.GetComponent<AudioSource> ().Stop ();
 		CameraFollow.ShakeCamera (0.5f, 0.5f);
-		Destroy (GameObject.FindGameObjectWithTag("ParticleSystem"));
+//		Destroy (GameObject.FindGameObjectWithTag("ParticleSystem"));
 		_runAnimation = false;
 	}
 
