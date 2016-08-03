@@ -18,10 +18,16 @@ public class PickerUpperController : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D col) {
 		if (col.gameObject.CompareTag("PickUp")) {
-//			print (col.gameObject.tag);
-			PlayerMovement.pickUpCount += 1;
+			if (PlayerMovement._isSuper) {
+				PlayerMovement.pickUpCount += 10;
+			} else {
+				PlayerMovement.pickUpCount += 1;
+			}
 
-			Destroy (col.gameObject);
+			col.gameObject.GetComponent<AudioSource> ().Play ();
+			col.gameObject.GetComponent<SpriteRenderer> ().enabled = false;
+			col.gameObject.GetComponent<BoxCollider2D> ().enabled = false;
+			Destroy (col.gameObject, 1f);
 		}
 
 		if (col.gameObject.CompareTag ("Goal")) {

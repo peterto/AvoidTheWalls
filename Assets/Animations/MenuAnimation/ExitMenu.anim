@@ -19,76 +19,91 @@ AnimationClip:
   - curve:
       serializedVersion: 2
       m_Curve:
-      - time: 0.03333333
-        value: 0
-        inSlope: 0
-        outSlope: 0
+      - time: 0
+        value: 2.7999868
+        inSlope: -153.59984
+        outSlope: -153.59984
+        tangentMode: 10
+      - time: 0.083333336
+        value: -10
+        inSlope: -136.79993
+        outSlope: -136.79993
+        tangentMode: 10
+      - time: 0.16666667
+        value: -20
+        inSlope: 852.00006
+        outSlope: 852.00006
         tangentMode: 10
       - time: 0.41666666
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      - time: 0.8333333
-        value: 0
-        inSlope: 0
-        outSlope: 0
+        value: 436
+        inSlope: 1824.0001
+        outSlope: 1824.0001
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_AnchoredPosition.x
-    path: Panel/Panel/MenuOverlay
+    path: Panel/MenuOverlay/Button
     classID: 224
     script: {fileID: 0}
   - curve:
       serializedVersion: 2
       m_Curve:
-      - time: 0.03333333
-        value: -38
-        inSlope: -78.26087
-        outSlope: -78.26087
+      - time: 0
+        value: -198.50002
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 0.083333336
+        value: -198.50002
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 0.16666667
+        value: -198.50002
+        inSlope: 877.00006
+        outSlope: 877.00006
         tangentMode: 10
       - time: 0.41666666
-        value: -68
-        inSlope: 473.2696
-        outSlope: 473.2696
-        tangentMode: 10
-      - time: 0.8333333
-        value: 359
-        inSlope: 1024.8
-        outSlope: 1024.8
+        value: 240
+        inSlope: 1754.0001
+        outSlope: 1754.0001
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_AnchoredPosition.y
-    path: Panel/Panel/MenuOverlay
+    path: Panel/MenuOverlay
     classID: 224
     script: {fileID: 0}
   - curve:
       serializedVersion: 2
       m_Curve:
-      - time: 0.03333333
-        value: 0.000015258789
+      - time: 0
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 10
-      - time: 0.41666666
-        value: 0.000015258789
-        inSlope: 298.8
-        outSlope: 298.8
+      - time: 0.083333336
+        value: 0
+        inSlope: 0
+        outSlope: 0
         tangentMode: 10
-      - time: 0.8333333
-        value: 249
-        inSlope: 597.6
-        outSlope: 597.6
+      - time: 0.16666667
+        value: 0
+        inSlope: -1223.0001
+        outSlope: -1223.0001
+        tangentMode: 10
+      - time: 0.41666666
+        value: -611.5
+        inSlope: -2446.0002
+        outSlope: -2446.0002
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: m_AnchoredPosition.x
-    path: Panel/Panel/MenuOverlay/Button
+    attribute: m_AnchoredPosition.y
+    path: Panel/MenuOverlay/Button
     classID: 224
     script: {fileID: 0}
   m_PPtrCurves: []
@@ -99,20 +114,20 @@ AnimationClip:
     m_Extent: {x: 0, y: 0, z: 0}
   m_ClipBindingConstant:
     genericBindings:
-    - path: 2184790855
+    - path: 3890024057
+      attribute: 1460864421
+      script: {fileID: 0}
+      classID: 224
+      customType: 0
+      isPPtrCurve: 0
+    - path: 4230155934
       attribute: 538195251
       script: {fileID: 0}
       classID: 224
       customType: 0
       isPPtrCurve: 0
-    - path: 3421506001
-      attribute: 1460864421
-      script: {fileID: 0}
-      classID: 224
-      customType: 0
-      isPPtrCurve: 0
-    - path: 2184790855
-      attribute: 1460864421
+    - path: 3890024057
+      attribute: 538195251
       script: {fileID: 0}
       classID: 224
       customType: 0
@@ -123,7 +138,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.8333333
+    m_StopTime: 0.41666666
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -142,76 +157,91 @@ AnimationClip:
   - curve:
       serializedVersion: 2
       m_Curve:
-      - time: 0.03333333
-        value: 0
-        inSlope: 0
-        outSlope: 0
+      - time: 0
+        value: 2.7999868
+        inSlope: -153.59984
+        outSlope: -153.59984
+        tangentMode: 10
+      - time: 0.083333336
+        value: -10
+        inSlope: -136.79993
+        outSlope: -136.79993
+        tangentMode: 10
+      - time: 0.16666667
+        value: -20
+        inSlope: 852.00006
+        outSlope: 852.00006
         tangentMode: 10
       - time: 0.41666666
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      - time: 0.8333333
-        value: 0
-        inSlope: 0
-        outSlope: 0
+        value: 436
+        inSlope: 1824.0001
+        outSlope: 1824.0001
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_AnchoredPosition.x
-    path: Panel/Panel/MenuOverlay
+    path: Panel/MenuOverlay/Button
     classID: 224
     script: {fileID: 0}
   - curve:
       serializedVersion: 2
       m_Curve:
-      - time: 0.03333333
-        value: -38
-        inSlope: -78.26087
-        outSlope: -78.26087
+      - time: 0
+        value: -198.50002
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 0.083333336
+        value: -198.50002
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 0.16666667
+        value: -198.50002
+        inSlope: 877.00006
+        outSlope: 877.00006
         tangentMode: 10
       - time: 0.41666666
-        value: -68
-        inSlope: 473.2696
-        outSlope: 473.2696
-        tangentMode: 10
-      - time: 0.8333333
-        value: 359
-        inSlope: 1024.8
-        outSlope: 1024.8
+        value: 240
+        inSlope: 1754.0001
+        outSlope: 1754.0001
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_AnchoredPosition.y
-    path: Panel/Panel/MenuOverlay
+    path: Panel/MenuOverlay
     classID: 224
     script: {fileID: 0}
   - curve:
       serializedVersion: 2
       m_Curve:
-      - time: 0.03333333
-        value: 0.000015258789
+      - time: 0
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 10
-      - time: 0.41666666
-        value: 0.000015258789
-        inSlope: 298.8
-        outSlope: 298.8
+      - time: 0.083333336
+        value: 0
+        inSlope: 0
+        outSlope: 0
         tangentMode: 10
-      - time: 0.8333333
-        value: 249
-        inSlope: 597.6
-        outSlope: 597.6
+      - time: 0.16666667
+        value: 0
+        inSlope: -1223.0001
+        outSlope: -1223.0001
+        tangentMode: 10
+      - time: 0.41666666
+        value: -611.5
+        inSlope: -2446.0002
+        outSlope: -2446.0002
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: m_AnchoredPosition.x
-    path: Panel/Panel/MenuOverlay/Button
+    attribute: m_AnchoredPosition.y
+    path: Panel/MenuOverlay/Button
     classID: 224
     script: {fileID: 0}
   m_EulerEditorCurves: []

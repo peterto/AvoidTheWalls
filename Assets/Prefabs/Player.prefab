@@ -1,17 +1,17 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &119114
+--- !u!1 &101132
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 427222}
-  - 198: {fileID: 19840434}
-  - 199: {fileID: 19942620}
+  - 4: {fileID: 492326}
+  - 198: {fileID: 19861332}
+  - 199: {fileID: 19902464}
   m_Layer: 0
-  m_Name: Particle System
+  m_Name: PlayerParticleSystem
   m_TagString: ParticleSystem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,6 +32,7 @@ GameObject:
   - 114: {fileID: 11471036}
   - 95: {fileID: 9522608}
   - 96: {fileID: 9622336}
+  - 82: {fileID: 8200542}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -50,15 +51,15 @@ Transform:
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 427222}
+  - {fileID: 492326}
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!4 &427222
+--- !u!4 &492326
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 119114}
+  m_GameObject: {fileID: 101132}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -97,6 +98,80 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 0.03125, y: 0.03125}
+--- !u!82 &8200542
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 191728}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 48035042eaf722e42bfa77d121d8046f, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &9522608
 Animator:
   serializedVersion: 3
@@ -149,13 +224,13 @@ TrailRenderer:
       rgba: 4294967295
     m_Color[1]:
       serializedVersion: 2
-      rgba: 4278190284
+      rgba: 4294967295
     m_Color[2]:
       serializedVersion: 2
-      rgba: 4280427248
+      rgba: 4294967295
     m_Color[3]:
       serializedVersion: 2
-      rgba: 4285295858
+      rgba: 4294967295
     m_Color[4]:
       serializedVersion: 2
       rgba: 16777215
@@ -175,11 +250,12 @@ MonoBehaviour:
   _xspeed: 10
   _yspeed: -100
   _playerSpeed: 10
-  _particleSystem: {fileID: 19840434}
+  _particleSystem: {fileID: 19861332}
   _original: {fileID: 21300000, guid: ec462680e9f094342b33ca62fa1dd82c, type: 3}
   _level: {fileID: 0}
   _music: {fileID: 0}
   _menu: {fileID: 0}
+  _pickUps: {fileID: 0}
 --- !u!114 &11471036
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -192,14 +268,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _scoreText: {fileID: 0}
---- !u!198 &19840434
+--- !u!198 &19861332
 ParticleSystem:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 119114}
+  m_GameObject: {fileID: 101132}
   serializedVersion: 2
-  lengthInSec: 5
+  lengthInSec: 1
   startDelay:
     scalar: 0
     maxCurve:
@@ -1691,12 +1767,12 @@ ParticleSystem:
     subEmitterCollision1: {fileID: 0}
     subEmitterDeath: {fileID: 0}
     subEmitterDeath1: {fileID: 0}
---- !u!199 &19942620
+--- !u!199 &19902464
 ParticleSystemRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 119114}
+  m_GameObject: {fileID: 101132}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
