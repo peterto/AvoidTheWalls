@@ -31,20 +31,34 @@ public class PlayerMovement : MonoBehaviour {
 	void Update () {
 
 		if (!_isDead) {
-			float horizontal = Input.GetAxisRaw ("Horizontal");
-			if (this.gameObject.GetComponent<Rigidbody2D> () == null) {
-				this.gameObject.AddComponent<Rigidbody2D> ();
-			} else {
-				Rigidbody2D rigidbody = this.gameObject.GetComponent<Rigidbody2D> ();
-				rigidbody.velocity = Vector2.right * horizontal * _xspeed;
-				rigidbody.AddForce (new Vector2 (0, _yspeed));
-				if (Input.GetKey (KeyCode.DownArrow) || Input.GetMouseButton (0)) {
-					_isSuper = true;
-					rigidbody.AddForce (new Vector2 (0, _yspeed * _playerSpeed));
-				} else {
-					_isSuper = false;
-				}
-			}
+
+
+            #if UNITY_IOS
+                if (this.gameObject.GetComponent<Rigidbody2D> () == null) {
+                    this.gameObject.AddComponent<Rigidbody2D> ();
+                } else {
+                    Rigidbody2D rigidbody = this.gameObject.GetComponent<Rigidbody2D> ();
+                    rigidbody.AddForce (new Vector2 (0, _yspeed));
+//                    Vector3 pos = Camera.main.ScreenToWorldPoint (new Vector3 (Input.GetTouch(0).position.x, this.transform.position.y, 0));
+                    transform.position = new Vector3(Input.GetTouch(0).position.x, transform.position.y, 0);
+                }
+            #elif UNITY_STANDALONE
+
+    			float horizontal = Input.GetAxisRaw ("Horizontal");
+    			if (this.gameObject.GetComponent<Rigidbody2D> () == null) {
+    				this.gameObject.AddComponent<Rigidbody2D> ();
+    			} else {
+    				Rigidbody2D rigidbody = this.gameObject.GetComponent<Rigidbody2D> ();
+    				rigidbody.velocity = Vector2.right * horizontal * _xspeed;
+    				rigidbody.AddForce (new Vector2 (0, _yspeed));
+    				if (Input.GetKey (KeyCode.DownArrow) || Input.GetMouseButton (0)) {
+    					_isSuper = true;
+    					rigidbody.AddForce (new Vector2 (0, _yspeed * _playerSpeed));
+    				} else {
+    					_isSuper = false;
+    				}
+    			}
+            #endif
 
 		} else {
 	
