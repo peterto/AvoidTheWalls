@@ -44,7 +44,7 @@ public class PlayerMovement : MonoBehaviour {
 //                        transform.position = new Vector3(pos.x, pos.y, pos.z);
                         Vector2 pos = Input.GetTouch(0).position;
                         pos = Camera.main.ScreenToWorldPoint(pos);
-//                        Vector2 newPos = new Vector2(pos.x, this.transform.position.y);
+                        Vector2 newPos = new Vector2(pos.x, this.transform.position.y);
                         transform.position = pos;
                     }
                 }
@@ -57,12 +57,12 @@ public class PlayerMovement : MonoBehaviour {
     				Rigidbody2D rigidbody = this.gameObject.GetComponent<Rigidbody2D> ();
     				rigidbody.velocity = Vector2.right * horizontal * _xspeed;
     				rigidbody.AddForce (new Vector2 (0, _yspeed));
-//    				if (Input.GetKey (KeyCode.DownArrow) || Input.GetMouseButton (0)) {
-//    					_isSuper = true;
-//    					rigidbody.AddForce (new Vector2 (0, _yspeed * _playerSpeed));
-//    				} else {
-//    					_isSuper = false;
-//    				}
+    				if (Input.GetKey (KeyCode.DownArrow) || Input.GetMouseButton (0)) {
+    					_isSuper = true;
+    					rigidbody.AddForce (new Vector2 (0, _yspeed * _playerSpeed));
+    				} else {
+    					_isSuper = false;
+    				}
     			}
             #endif
 
