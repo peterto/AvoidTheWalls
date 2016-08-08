@@ -3558,6 +3558,10 @@ Prefab:
       propertyPath: _menuController
       value: 
       objectReference: {fileID: 935630055}
+    - target: {fileID: 11448628, guid: afc17d51a0c51496a96f9ebc07b6219f, type: 2}
+      propertyPath: _yspeed
+      value: -10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: afc17d51a0c51496a96f9ebc07b6219f, type: 2}
   m_IsPrefabParent: 0
