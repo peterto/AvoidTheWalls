@@ -131,16 +131,14 @@ public class PlayerMovement : MonoBehaviour {
     private Vector3 HandleMouseInput() {
         if(Input.GetButtonDown("Fire1")) {
             if(Time.time - lastClickTime < catchTime) {
-//                print("Double click");
+                //double click
+                print("Double click");
                 Rigidbody2D rigidbody = this.GetComponent<Rigidbody2D>();
                 rigidbody.AddForce (new Vector2 (0, _yspeed * _playerSpeed));
-                _isSuper = true;
             } else {
                 //normal click
             }
             lastClickTime = Time.time;
-        } else {
-            _isSuper = false;
         }
 
             Vector3 screenPosition = Input.mousePosition;
