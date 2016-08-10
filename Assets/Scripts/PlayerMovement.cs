@@ -174,6 +174,7 @@ public class PlayerMovement : MonoBehaviour {
 			if (!PickerUpperController._shieldBooster) {
 				this.gameObject.GetComponent<AudioSource> ().Play ();
 				_isDead = true;
+				_isSuper = false;
 			} else {
 				PickerUpperController._shieldBooster = false;
 			}
