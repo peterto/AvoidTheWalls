@@ -16,9 +16,10 @@ public class PickerUpperController : MonoBehaviour {
 	private int _superPickUp = 10;
 
 	[SerializeField] GameObject _shieldBoosterText;
-	private bool _shieldBooster = false;
+	public static bool _shieldBooster = false;
 	private float _shieldBoosterDuration = 5f;
 	private float _shieldBoosterOriginalTime;
+	public Material _shieldBoosterMaterial;
 
 
 	// Use this for initialization
@@ -72,6 +73,7 @@ public class PickerUpperController : MonoBehaviour {
 
 		if (col.gameObject.CompareTag ("ShieldBooster")) {
 //			_shieldBoosterOriginalTime = Time.time;
+			this.gameObject.GetComponent<SpriteRenderer>().material = _shieldBoosterMaterial;
 			_shieldBooster = true;
 		}
 	}

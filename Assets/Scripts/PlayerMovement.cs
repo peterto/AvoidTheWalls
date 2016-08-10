@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour {
     public static bool _runAnimation = true;
 	public Material _isSuperMaterial;
 	public Material _regularMaterial;
+	public Material _shieldBoosterMaterial;
 
     private Vector3 _endPosition;
     private Vector3 _startPosition;
@@ -97,7 +98,11 @@ public class PlayerMovement : MonoBehaviour {
 					this.gameObject.GetComponent<SpriteRenderer> ().material = _isSuperMaterial;
 					rigidbody.AddForce (new Vector2 (0, _yspeed * _playerSpeed));
 				} else {
-					this.gameObject.GetComponent<SpriteRenderer> ().material = _regularMaterial;
+					if (PickerUpperController._shieldBooster) {
+						this.gameObject.GetComponent<SpriteRenderer> ().material = _shieldBoosterMaterial;
+					} else {
+						this.gameObject.GetComponent<SpriteRenderer> ().material = _regularMaterial;
+					}
 				}
 			
 
@@ -166,8 +171,12 @@ public class PlayerMovement : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D col) {
         if (col.gameObject.CompareTag ("Obstacle")) {
-            this.gameObject.GetComponent<AudioSource> ().Play ();
-            _isDead = true;
+			if (!PickerUpperController._shieldBooster) {
+				this.gameObject.GetComponent<AudioSource> ().Play ();
+				_isDead = true;
+			} else {
+				PickerUpperController._shieldBooster = false;
+			}
         }
     }
 
