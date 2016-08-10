@@ -10,13 +10,22 @@ public class PickerUpperController : MonoBehaviour {
 	private int _scoreBoosterMultiplier = 2;
 	private bool _scoreBooster = false;
 	private float _scoreBoosterDuration = 5f;
+	private float _scoreBoosterOriginalTime;
+
 	private int _baseScore = 1;
 	private int _superPickUp = 10;
-	private float _scoreBoosterOriginalTime;
+
+	[SerializeField] GameObject _shieldBoosterText;
+	private bool _shieldBooster = false;
+	private float _shieldBoosterDuration = 5f;
+	private float _shieldBoosterOriginalTime;
+
+
 	// Use this for initialization
 	void Start () {
 		_scoreBoosterText.GetComponent<Text> ().text = "x1";
 		_scoreBoosterOriginalTime = -5f;
+		_shieldBoosterOriginalTime = -5f;
 	}
 	
 	// Update is called once per frame
@@ -35,7 +44,9 @@ public class PickerUpperController : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D col) {
 		if (col.gameObject.CompareTag("PickUp")) {
-			if (PlayerMovement._isSuper) {
+			if (PlayerMovement._isSuper && _scoreBooster) {
+				PlayerMovement.pickUpCount += (_scoreBoosterMultiplier * _superPickUp);
+			} else if (PlayerMovement._isSuper) {
 				PlayerMovement.pickUpCount += _superPickUp;
 			} else if (_scoreBooster) {
 				PlayerMovement.pickUpCount += (_scoreBoosterMultiplier * _baseScore);
@@ -57,6 +68,11 @@ public class PickerUpperController : MonoBehaviour {
 		if (col.gameObject.CompareTag ("ScoreBooster")) {
 			_scoreBoosterOriginalTime = Time.time;
 			_scoreBooster = true;
+		}
+
+		if (col.gameObject.CompareTag ("ShieldBooster")) {
+//			_shieldBoosterOriginalTime = Time.time;
+			_shieldBooster = true;
 		}
 	}
 }

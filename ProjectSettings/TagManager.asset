@@ -9,6 +9,8 @@ TagManager:
   - Goal
   - ParticleSystem
   - PickUpGroup
+  - ScoreBooster
+  - ShieldBooster
   layers:
   - Default
   - TransparentFX
