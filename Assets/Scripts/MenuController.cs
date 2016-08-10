@@ -13,6 +13,7 @@ public class MenuController : MonoBehaviour {
 	public void RestartLevel() {
 		
 		_player.transform.position = new Vector2 (0, 0);
+		_player.transform.rotation = new Quaternion (0, 0, 0, 0);
 		//		_player.GetComponent<Rigidbody2D> ().AddForce (new Vector2 (0, 1000));
 		//		_player.GetComponent<BoxCollider2D> ().enabled = true;
 

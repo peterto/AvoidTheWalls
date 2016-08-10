@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour {
 	public float _catchTime = 0.25f;
 
     [SerializeField] float _xspeed = 10f;
-    [SerializeField] float _yspeed = -100f;
+    [SerializeField] float _yspeed = -30f;
     [SerializeField] float _playerSpeed = 10f;
     [SerializeField] ParticleSystem _particleSystem;
     public static bool _isDead = false;
