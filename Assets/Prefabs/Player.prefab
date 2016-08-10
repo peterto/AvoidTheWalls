@@ -247,6 +247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4272f1bdbc3799a45b8664bd4ab47e79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _catchTime: 0.25
   _xspeed: 10
   _yspeed: -100
   _playerSpeed: 10
@@ -256,6 +257,9 @@ MonoBehaviour:
   _music: {fileID: 0}
   _menu: {fileID: 0}
   _pickUps: {fileID: 0}
+  _menuController: {fileID: 0}
+  _isSuperMaterial: {fileID: 0}
+  _regularMaterial: {fileID: 0}
 --- !u!114 &11471036
 MonoBehaviour:
   m_ObjectHideFlags: 1

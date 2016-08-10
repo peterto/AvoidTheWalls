@@ -22,6 +22,8 @@ public class PlayerMovement : MonoBehaviour {
     [SerializeField] GameObject _pickUps;
     [SerializeField] GameObject _menuController;
     public static bool _runAnimation = true;
+	public Material _isSuperMaterial;
+	public Material _regularMaterial;
 
     private Vector3 _endPosition;
     private Vector3 _startPosition;
@@ -92,8 +94,12 @@ public class PlayerMovement : MonoBehaviour {
                 //                thingToMove.transform.position = Vector3.Lerp(thingToMove.transform.position, new Vector3(_endPosition.x, _endPosition.y, 0), Time.deltaTime * smooth);
                 this.transform.position = newPos;
 				if (_isSuper) {
+					this.gameObject.GetComponent<SpriteRenderer> ().material = _isSuperMaterial;
 					rigidbody.AddForce (new Vector2 (0, _yspeed * _playerSpeed));
+				} else {
+					this.gameObject.GetComponent<SpriteRenderer> ().material = _regularMaterial;
 				}
+			
 
 
             }
