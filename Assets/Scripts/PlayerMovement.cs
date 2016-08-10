@@ -4,10 +4,8 @@ using System.Collections;
 
 public class PlayerMovement : MonoBehaviour {
 
-    private float lastClickTime;
-
-    public float catchTime = 0.25f;
-
+	private float _lastClickTime;
+	public float _catchTime = 0.25f;
 
     [SerializeField] float _xspeed = 10f;
     [SerializeField] float _yspeed = -100f;
@@ -93,6 +91,9 @@ public class PlayerMovement : MonoBehaviour {
                 rigidbody.velocity = new Vector2(0, 0);
                 //                thingToMove.transform.position = Vector3.Lerp(thingToMove.transform.position, new Vector3(_endPosition.x, _endPosition.y, 0), Time.deltaTime * smooth);
                 this.transform.position = newPos;
+				if (_isSuper) {
+					rigidbody.AddForce (new Vector2 (0, _yspeed * _playerSpeed));
+				}
 
 
             }
@@ -130,18 +131,25 @@ public class PlayerMovement : MonoBehaviour {
 
     private Vector3 HandleMouseInput() {
         if(Input.GetButtonDown("Fire1")) {
-            if(Time.time - lastClickTime < catchTime) {
+            if(Time.time - _lastClickTime < _catchTime) {
                 //                print("Double click");
                 Rigidbody2D rigidbody = this.GetComponent<Rigidbody2D>();
                 rigidbody.AddForce (new Vector2 (0, _yspeed * _playerSpeed));
                 _isSuper = true;
             } else {
-                //normal click
+				//do something if single click
             }
-            lastClickTime = Time.time;
+
+			_lastClickTime = Time.time;
+
         } else {
-            _isSuper = false;
+//            _isSuper = false;
         }
+
+		// Sets boost off
+		if (Input.GetButtonUp ("Fire1")) {
+			_isSuper = false;
+		}
 
         Vector3 screenPosition = Input.mousePosition;
         //            screenPosition = new Vector3(screenPosition.x, 0, 0);
@@ -149,7 +157,6 @@ public class PlayerMovement : MonoBehaviour {
 
         return _startPosition;
     }
-
 
     void OnCollisionEnter2D(Collision2D col) {
         if (col.gameObject.CompareTag ("Obstacle")) {

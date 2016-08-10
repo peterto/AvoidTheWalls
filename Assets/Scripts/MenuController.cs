@@ -24,6 +24,7 @@ public class MenuController : MonoBehaviour {
 		Instantiate (_pickUps);
 		_menu.gameObject.GetComponent<Animator> ().SetBool ("ExitMenu", true);
 		this.gameObject.GetComponent<AudioSource> ().Play ();
+		PlayerMovement._isSuper = false;
 		Invoke ("AnimateMenu", 1f);
 	}
 
