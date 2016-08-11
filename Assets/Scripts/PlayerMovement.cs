@@ -90,7 +90,7 @@ public class PlayerMovement : MonoBehaviour {
                 _endPosition = HandleMouseInput();
                 //                }
                 Vector3 newPos = this.transform.position;
-                newPos.x = _endPosition.x;
+				newPos.x = _endPosition.x;
                 rigidbody.velocity = new Vector2(0, 0);
                 //                thingToMove.transform.position = Vector3.Lerp(thingToMove.transform.position, new Vector3(_endPosition.x, _endPosition.y, 0), Time.deltaTime * smooth);
                 this.transform.position = newPos;
@@ -162,7 +162,7 @@ public class PlayerMovement : MonoBehaviour {
 			_isSuper = false;
 		}
 
-        Vector3 screenPosition = Input.mousePosition;
+		Vector3 screenPosition = Input.mousePosition;
         //            screenPosition = new Vector3(screenPosition.x, 0, 0);
         _startPosition = Camera.main.ScreenToWorldPoint(screenPosition);
 
