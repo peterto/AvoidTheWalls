@@ -9,6 +9,7 @@ public class MagneticPowerUpController : MonoBehaviour {
 	private bool _magneticBooster = false;
 	private float _magneticBoosterDuration = 5f;
 	private float _magneticBoosterOriginalTime;
+	public Material _flicker;
 
 	void Start() {
 		_magneticBoosterOriginalTime = -5f;
@@ -36,6 +37,19 @@ public class MagneticPowerUpController : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D col) {
 		if (col.gameObject.CompareTag ("MagneticBooster")) {
+			DOTween.Init(false, true, LogBehaviour.ErrorsOnly);
+			Sequence mySequence = DOTween.Sequence();
+			mySequence.Append(_flicker.DOFade (1, 0.1f));
+			mySequence.Append(_flicker.DOFade (0, 0.1f));
+			Camera.main.DOShakePosition (0.1f, 1f, 1, 0);
+
+			col.gameObject.GetComponent<AudioSource> ().Play ();
+
+			col.gameObject.GetComponent<MeshRenderer> ().enabled = false;
+			col.gameObject.GetComponent<BoxCollider2D> ().enabled = false;
+
+
+//			_flicker.DOFade (0, 0.1f);
 			_magneticBoosterOriginalTime = Time.time;
 			_magneticBooster = true;
 		}

@@ -173,6 +173,7 @@ public class PlayerMovement : MonoBehaviour {
         if (col.gameObject.CompareTag ("Obstacle")) {
 			if (!PickerUpperController._shieldBooster) {
 				this.gameObject.GetComponent<AudioSource> ().Play ();
+				this.gameObject.GetComponent<Renderer> ().enabled = false;
 				_isDead = true;
 				_isSuper = false;
 			} else {
@@ -207,7 +208,7 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     void Death() {
-        this.GetComponentInChildren<ParticleSystem> ().Emit (10);
+        this.GetComponentInChildren<ParticleSystem> ().Emit (20);
         Destroy (GameObject.FindGameObjectWithTag ("PickUpGroup"));
         Destroy (this.gameObject.GetComponent<Rigidbody2D> ());
         _music.GetComponent<AudioSource> ().Stop ();
