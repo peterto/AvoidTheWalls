@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using DG.Tweening;
 
 public class MagneticPowerUpController : MonoBehaviour {
 
@@ -20,9 +21,11 @@ public class MagneticPowerUpController : MonoBehaviour {
 			GameObject [] pickUps = GameObject.FindGameObjectsWithTag ("PickUp");
 			for (int i = 0; i < pickUps.Length; i++) {
 				float distanceBetweenPlayer = Vector3.Distance (pickUps [i].transform.position, this.gameObject.transform.position);
-				if (distanceBetweenPlayer < 10) {
+				if (distanceBetweenPlayer < 3) {
 					//move pick up to player
-					
+
+					DOTween.Init(false, true, LogBehaviour.ErrorsOnly);
+					pickUps [i].transform.DOMove (this.gameObject.transform.position, 0.4f);
 				}
 			}
 
