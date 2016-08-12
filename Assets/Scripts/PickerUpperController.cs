@@ -57,7 +57,7 @@ public class PickerUpperController : MonoBehaviour {
 				
 
 			col.gameObject.GetComponent<AudioSource> ().Play ();
-			col.gameObject.GetComponent<SpriteRenderer> ().enabled = false;
+			col.gameObject.GetComponent<MeshRenderer> ().enabled = false;
 			col.gameObject.GetComponent<BoxCollider2D> ().enabled = false;
 			Destroy (col.gameObject, 1f);
 		}
@@ -77,7 +77,7 @@ public class PickerUpperController : MonoBehaviour {
 //			_shieldBoosterOriginalTime = Time.time;
 			col.gameObject.GetComponent<MeshRenderer> ().enabled = false;
 			col.gameObject.GetComponent<CircleCollider2D> ().enabled = false;
-			this.gameObject.GetComponent<SpriteRenderer>().material = _shieldBoosterMaterial;
+			this.gameObject.GetComponent<MeshRenderer>().material = _shieldBoosterMaterial;
 			_shieldBooster = true;
 		}
 	}

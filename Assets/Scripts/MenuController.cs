@@ -26,6 +26,7 @@ public class MenuController : MonoBehaviour {
 		_menu.gameObject.GetComponent<Animator> ().SetBool ("ExitMenu", true);
 		this.gameObject.GetComponent<AudioSource> ().Play ();
 		PlayerMovement._isSuper = false;
+		_player.gameObject.GetComponent<MeshRenderer> ().enabled = true;
 		Invoke ("AnimateMenu", 1f);
 	}
 

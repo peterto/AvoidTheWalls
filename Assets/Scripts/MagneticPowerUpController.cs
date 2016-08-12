@@ -26,7 +26,7 @@ public class MagneticPowerUpController : MonoBehaviour {
 					//move pick up to player
 
 					DOTween.Init(false, true, LogBehaviour.ErrorsOnly);
-					pickUps [i].transform.DOMove (this.gameObject.transform.position, 0.4f);
+					pickUps [i].transform.DOMove (this.gameObject.transform.position, 0.2f);
 				}
 			}
 
@@ -41,7 +41,7 @@ public class MagneticPowerUpController : MonoBehaviour {
 			Sequence mySequence = DOTween.Sequence();
 			mySequence.Append(_flicker.DOFade (1, 0.1f));
 			mySequence.Append(_flicker.DOFade (0, 0.1f));
-			Camera.main.DOShakePosition (0.1f, 1f, 1, 0);
+			Camera.main.DOShakeRotation (0.2f, 5f, 1, 1f);
 
 			col.gameObject.GetComponent<AudioSource> ().Play ();
 

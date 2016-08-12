@@ -95,13 +95,13 @@ public class PlayerMovement : MonoBehaviour {
                 //                thingToMove.transform.position = Vector3.Lerp(thingToMove.transform.position, new Vector3(_endPosition.x, _endPosition.y, 0), Time.deltaTime * smooth);
                 this.transform.position = newPos;
 				if (_isSuper) {
-					this.gameObject.GetComponent<SpriteRenderer> ().material = _isSuperMaterial;
+					this.gameObject.GetComponent<MeshRenderer> ().material = _isSuperMaterial;
 					rigidbody.AddForce (new Vector2 (0, _yspeed * _playerSpeed));
 				} else {
 					if (PickerUpperController._shieldBooster) {
-						this.gameObject.GetComponent<SpriteRenderer> ().material = _shieldBoosterMaterial;
+						this.gameObject.GetComponent<MeshRenderer> ().material = _shieldBoosterMaterial;
 					} else {
-						this.gameObject.GetComponent<SpriteRenderer> ().material = _regularMaterial;
+						this.gameObject.GetComponent<MeshRenderer> ().material = _regularMaterial;
 					}
 				}
 			
@@ -173,7 +173,7 @@ public class PlayerMovement : MonoBehaviour {
         if (col.gameObject.CompareTag ("Obstacle")) {
 			if (!PickerUpperController._shieldBooster) {
 				this.gameObject.GetComponent<AudioSource> ().Play ();
-				this.gameObject.GetComponent<Renderer> ().enabled = false;
+				this.gameObject.GetComponent<MeshRenderer> ().enabled = false;
 				_isDead = true;
 				_isSuper = false;
 			} else {
