@@ -10,8 +10,16 @@ public class MenuController : MonoBehaviour {
 	[SerializeField] GameObject _particleSystem;
 	[SerializeField] GameObject _pickUps;
 	[SerializeField] GameObject _music;
+	[SerializeField] Text _currentScore;
+	[SerializeField] Text _highScore;
+
 	public void RestartLevel() {
-		
+
+		int highScore = PlayerPrefs.GetInt ("HighScore");
+		if (PlayerMovement.pickUpCount > highScore) {
+			PlayerPrefs.SetInt ("HighScore", PlayerMovement.pickUpCount);
+		}
+
 		_player.transform.position = new Vector2 (0, 0);
 		_player.transform.rotation = new Quaternion (0, 0, 0, 0);
 		//		_player.GetComponent<Rigidbody2D> ().AddForce (new Vector2 (0, 1000));
@@ -23,11 +31,12 @@ public class MenuController : MonoBehaviour {
 //		ps.transform.parent = _player.transform;
 		PlayerMovement.pickUpCount = 0;
 		Instantiate (_pickUps);
-		_menu.gameObject.GetComponent<Animator> ().SetBool ("ExitMenu", true);
+//		_menu.gameObject.GetComponent<Animator> ().SetBool ("ExitMenu", true);
 		this.gameObject.GetComponent<AudioSource> ().Play ();
 		PlayerMovement._isSuper = false;
 		_player.gameObject.GetComponent<MeshRenderer> ().enabled = true;
-		Invoke ("AnimateMenu", 1f);
+//		Invoke ("AnimateMenu", 1f);
+		AnimateMenu ();
 	}
 
 	void AnimateMenu () {

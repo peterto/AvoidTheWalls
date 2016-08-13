@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using System.Collections;
 
 public class PlayerMovement : MonoBehaviour {
@@ -30,6 +31,9 @@ public class PlayerMovement : MonoBehaviour {
     private Vector3 _startPosition;
     //    public GameObject thingToMove;
     //    public float smooth = 2;
+
+	[SerializeField] Text _currentScore;
+	[SerializeField] Text _highScore;
 
     void Start () {
         pickUpCount = 0;
@@ -79,9 +83,11 @@ public class PlayerMovement : MonoBehaviour {
             //            /* in line input controls
             if (this.gameObject.GetComponent<Rigidbody2D> () == null) {
                 this.gameObject.AddComponent<Rigidbody2D> ();
+//				this.gameObject.GetComponent<Rigidbody2D> ().gravityScale = 0;
             } else {
                 Rigidbody2D rigidbody = this.gameObject.GetComponent<Rigidbody2D> ();
-                //                rigidbody.gravityScale = 0;
+                rigidbody.gravityScale = 0;
+				rigidbody.freezeRotation = true;
                 rigidbody.AddForce (new Vector2 (0, _yspeed));
 
                 //                if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer) {
@@ -174,6 +180,8 @@ public class PlayerMovement : MonoBehaviour {
 			if (!PickerUpperController._shieldBooster) {
 				this.gameObject.GetComponent<AudioSource> ().Play ();
 				this.gameObject.GetComponent<MeshRenderer> ().enabled = false;
+				Destroy (this.gameObject.GetComponent<Rigidbody2D> ());
+//				this
 				_isDead = true;
 				_isSuper = false;
 			} else {
@@ -217,6 +225,15 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     void SetMenuActive() {
+		int highScore = PlayerPrefs.GetInt ("HighScore");
+//		if (PlayerMovement.pickUpCount > highScore) {
+//			PlayerPrefs.SetInt ("HighScore", PlayerMovement.pickUpCount);
+//		}
+
+		_currentScore.text = PlayerMovement.pickUpCount.ToString ();
+		_highScore.text = highScore.ToString ();
+
+
         _menu.SetActive(true);
     }
 

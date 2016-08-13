@@ -21,6 +21,12 @@ public class MainMenuController : MonoBehaviour {
 		_middlePanelMaterial.DOColor (Color.white, 1f).SetLoops(-1, LoopType.Yoyo);
 //		_middlePanelMaterial.DOColor (Color.black, 1f).SetLoops(-1, LoopType.Yoyo);
 //		mySequence.Play ();
+
+		int highScore = PlayerPrefs.GetInt ("HighScore");
+		if (highScore <= 0) {
+			PlayerPrefs.SetInt ("HighScore", 0);
+		}
+
 	}
 	
 	// Update is called once per frame
