@@ -103,7 +103,9 @@ public class PlayerMovement : MonoBehaviour {
 				if (_isSuper) {
 					this.gameObject.GetComponent<MeshRenderer> ().material = _isSuperMaterial;
 					rigidbody.AddForce (new Vector2 (0, _yspeed * _playerSpeed));
+					_music.gameObject.GetComponent<AudioSource> ().pitch = 1.2f;
 				} else {
+					_music.gameObject.GetComponent<AudioSource> ().pitch = 1f;
 					if (PickerUpperController._shieldBooster) {
 						this.gameObject.GetComponent<MeshRenderer> ().material = _shieldBoosterMaterial;
 					} else {
@@ -151,7 +153,7 @@ public class PlayerMovement : MonoBehaviour {
             if(Time.time - _lastClickTime < _catchTime) {
                 //                print("Double click");
                 Rigidbody2D rigidbody = this.GetComponent<Rigidbody2D>();
-                rigidbody.AddForce (new Vector2 (0, _yspeed * _playerSpeed));
+//                rigidbody.AddForce (new Vector2 (0, _yspeed * _playerSpeed));
                 _isSuper = true;
             } else {
 				//do something if single click
@@ -180,7 +182,7 @@ public class PlayerMovement : MonoBehaviour {
 			if (!PickerUpperController._shieldBooster) {
 				this.gameObject.GetComponent<AudioSource> ().Play ();
 				this.gameObject.GetComponent<MeshRenderer> ().enabled = false;
-				Destroy (this.gameObject.GetComponent<Rigidbody2D> ());
+//				Destroy (this.gameObject.GetComponent<Rigidbody2D> ());
 //				this
 				_isDead = true;
 				_isSuper = false;
