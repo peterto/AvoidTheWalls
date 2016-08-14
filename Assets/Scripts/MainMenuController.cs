@@ -15,10 +15,12 @@ public class MainMenuController : MonoBehaviour {
 	void Start () {
 		DOTween.Init(false, true, LogBehaviour.ErrorsOnly);
 		Sequence mySequence = DOTween.Sequence();
-		mySequence.Append(_middlePanelMaterial.DOFade (1, 1f));
-		mySequence.Append(_middlePanelMaterial.DOFade (0, 1f));
+//		mySequence.Append(_middlePanelMaterial.DOFade (1, 1f));
+//		mySequence.Append(_middlePanelMaterial.DOFade (0, 1f));
+		mySequence.Append (_middlePanelMaterial.DOColor (Color.white, 0.2f));
+		mySequence.Append (_middlePanelMaterial.DOColor (Color.black, 0.2f));
 		mySequence.SetLoops (-1, LoopType.Yoyo);
-		_middlePanelMaterial.DOColor (Color.white, 1f).SetLoops(-1, LoopType.Yoyo);
+//		_middlePanelMaterial.DOColor (Color.white, 1f).SetLoops(-1, LoopType.Yoyo);
 //		_middlePanelMaterial.DOColor (Color.black, 1f).SetLoops(-1, LoopType.Yoyo);
 //		mySequence.Play ();
 
@@ -41,6 +43,6 @@ public class MainMenuController : MonoBehaviour {
 	}
 
 	public void PlayGame() {
-		SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex + 1);
+		SceneManager.LoadScene (1);
 	}
 }
