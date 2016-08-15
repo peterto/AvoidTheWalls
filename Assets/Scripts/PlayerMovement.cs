@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using DG.Tweening;
 using System.Collections;
 
 public class PlayerMovement : MonoBehaviour {
@@ -34,6 +35,7 @@ public class PlayerMovement : MonoBehaviour {
 
 	[SerializeField] Text _currentScore;
 	[SerializeField] Text _highScore;
+	[SerializeField] CanvasGroup _canvasGroup;
 
     void Start () {
         pickUpCount = 0;
@@ -237,6 +239,22 @@ public class PlayerMovement : MonoBehaviour {
 
 
         _menu.SetActive(true);
+		this.FadeIn ();
+
     }
+
+	public void FadeIn() {
+		StartCoroutine (DoFade ());
+	}
+
+	IEnumerator DoFade() {
+		CanvasGroup canvasGroup = _canvasGroup;
+		while (canvasGroup.alpha < 1) {
+			canvasGroup.alpha += Time.deltaTime / 2;
+			yield return null;
+		}
+		canvasGroup.interactable = true;
+		yield return null;
+	}
 
 }

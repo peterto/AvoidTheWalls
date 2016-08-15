@@ -69,12 +69,14 @@ public class PickerUpperController : MonoBehaviour {
 		if (col.gameObject.CompareTag ("ScoreBooster")) {
 			col.gameObject.GetComponent<MeshRenderer> ().enabled = false;
 			col.gameObject.GetComponent<BoxCollider2D> ().enabled = false;
+			col.gameObject.GetComponent<AudioSource> ().Play ();
 			_scoreBoosterOriginalTime = Time.time;
 			_scoreBooster = true;
 		}
 
 		if (col.gameObject.CompareTag ("ShieldBooster")) {
 //			_shieldBoosterOriginalTime = Time.time;
+			col.gameObject.GetComponent<AudioSource> ().Play ();
 			col.gameObject.GetComponent<MeshRenderer> ().enabled = false;
 			col.gameObject.GetComponent<CircleCollider2D> ().enabled = false;
 			this.gameObject.GetComponent<MeshRenderer>().material = _shieldBoosterMaterial;
